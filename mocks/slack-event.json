@@ -1,0 +1,4 @@
+{
+  "report": "`slack hook` is good",
+  "webhook": "dev/nhs/slack/hookPath"
+}
