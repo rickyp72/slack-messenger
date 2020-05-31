@@ -35,7 +35,8 @@ provider:
     - Effect: Allow
       Action:
         - secretsmanager:GetSecretValue
-      Resource: "arn:aws:secretsmanager:eu-west-2:245879739180:secret:dev/nhs/slack/hookPath-le1WCK"
+#      Resource: "arn:aws:secretsmanager:eu-west-2:245879739180:secret:dev/nhs/slack/hookPath-le1WCK"
+      Resource: "arn:aws:secretsmanager:eu-west-2:245879739180:secret:*"
 #  iamRoleStatements:
 #    - Effect: "Allow"
 #      Action:

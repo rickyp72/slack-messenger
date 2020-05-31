@@ -1,4 +1,4 @@
 {
   "report": "Test from `slack messenger lambda` :thumbsup:",
-  "webhook": "dev/rnb/slack/hookPath"
+  "webhook": "dev/rnb/slack/rnb_slack_app_testing"
 }
