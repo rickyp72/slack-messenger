@@ -1,13 +1,4 @@
-// Use this code snippet in your app.
-// If you need more information about configurations or implementing the sample code, visit the AWS docs:
-// https://aws.amazon.com/developers/getting-started/nodejs/
 
-// Load the AWS SDK
-// var AWS = require('aws-sdk'),
-//     region = "eu-west-2",
-//     secretName = "dev/nhs/slack/hookPath",
-//     secret,
-//     decodedBinarySecret;
 
 
 exports.getSecret = function (smpath) {
@@ -24,10 +15,7 @@ exports.getSecret = function (smpath) {
     var client = new AWS.SecretsManager({
         region: region
     });
-
-// In this sample we only handle the specific exceptions for the 'GetSecretValue' API.
-// See https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-// We rethrow the exception by default.
+    
 
     client.getSecretValue({SecretId: secretName}, function (err, data) {
         console.log("SecretName: " + secretName)
