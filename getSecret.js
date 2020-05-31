@@ -55,8 +55,6 @@ exports.getSecret = function (smpath) {
                 } else {
                     let buff = new Buffer(data.SecretBinary, 'base64');
                     decodedBinarySecret = buff.toString('ascii');
-                    resolve(decodedBinarySecret)
-                    console.log("FALLOUT")
                 }
             }
         });
