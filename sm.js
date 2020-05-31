@@ -53,7 +53,9 @@ client.getSecretValue({SecretId: secretName}, function(err, data) {
     }
 
     // Your code goes here.
-    console.log(secret)
+
     var jsonData = JSON.parse(secret);
-    console.log(jsonData.hookPath)
+
+    return jsonData
+
 });

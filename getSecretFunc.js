@@ -1,27 +1,24 @@
-
-
-
-exports.getSecret = function (smpath) {
-    let jsonData = '';
-    console.log("SM PATH: " + smpath)
+//outside exports.handler = (event, context, callback) => {
+exports.getSecret = function (secretName) {
+// function getSecret(secretName) {
     // Load the AWS SDK
-
     var AWS = require('aws-sdk'),
-        region = "eu-west-2",
-        secretName = smpath,
+        // region = process.env.AWS_REGION,
+        region = 'eu-west-2'
+        secretName = secretName,
         secret,
         decodedBinarySecret;
 
-
-
-// Create a Secrets Manager client
+    // Create a Secrets Manager client
     var client = new AWS.SecretsManager({
         region: region
     });
-    
 
-    client.getSecretValue({SecretId: secretName}, function (err, data) {
-        console.log("SecretName: " + secretName)
+    // In this sample we only handle the specific exceptions for the 'GetSecretValue' API.
+    // See https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
+    // We rethrow the exception by default.
+
+    client.getSecretValue({SecretId: secretName}, function(err, data) {
         if (err) {
             if (err.code === 'DecryptionFailureException')
                 // Secrets Manager can't decrypt the protected secret text using the provided KMS key.
@@ -48,24 +45,11 @@ exports.getSecret = function (smpath) {
             // Decrypts secret using the associated KMS CMK.
             // Depending on whether the secret is a string or binary, one of these fields will be populated.
             if ('SecretString' in data) {
-                secret = data.SecretString;
+                return data.SecretString;
             } else {
                 let buff = new Buffer(data.SecretBinary, 'base64');
-                decodedBinarySecret = buff.toString('ascii');
+                return buff.toString('ascii');
             }
         }
-
-        // Your code goes here.
-        // console.log("SECRET INSIDE: " + secret)
-        //
-        jsonData = JSON.parse(secret);
-        // return jsonData
-        console.log("JSONDATA: " + jsonData.hookPath)
-        //
-        // return jsonData.hookPath
     });
-    console.log("OUTSIDE SECRET: " + jsonData)
-    // var jsonData = JSON.parse(secret)
-    return jsonData.hookPath;
 }
-
