@@ -17,6 +17,7 @@ exports.getSecret = function (smpath) {
         region = "eu-west-2",
         secretName = smpath,
         secret,
+        jsonData,
         decodedBinarySecret;
 
 // Create a Secrets Manager client
@@ -65,12 +66,13 @@ exports.getSecret = function (smpath) {
         // Your code goes here.
         console.log("SECRET INSIDE: " + secret)
 
-        var jsonData = JSON.parse(secret);
+        jsonData = JSON.parse(secret);
         console.log("JSONDATA: " + jsonData.hookPath)
-        return jsonData;
+
 
     });
-    console.log("OUTSIDE SECRET: " + secret)
+    console.log("OUTSIDE SECRET: " + jsonData)
+    return jsonData
     // var jsonData = JSON.parse(secret)
     // return jsonData.hookPath;
 }
