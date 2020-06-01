@@ -1,3 +1,14 @@
+*config/infra/cloudformation not used in this project just here for future reference.
+
+
+
+
+
+ npm i serverless-pseudo-parameters --save
+
+
+
+
 sls deploy -v
 
 sls logs -f slack -t
