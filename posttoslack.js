@@ -1,9 +1,11 @@
-var https = require("https");
+"use strict"
+
+let https = require("https");
 exports.posttoslack = function(hostname, path, msg){
 
     return new Promise((resolve, reject) => {
 
-        var options = {
+        let options = {
             "method": "POST",
             "hostname": hostname,
             "path": path,
@@ -13,7 +15,7 @@ exports.posttoslack = function(hostname, path, msg){
         };
 
 
-        var req = https.request(options, (res) => {
+        let req = https.request(options, (res) => {
             resolve('Success');
         });
 

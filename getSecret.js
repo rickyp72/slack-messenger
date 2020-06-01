@@ -1,4 +1,4 @@
-
+"use strict"
 
 
 exports.getSecret = function (smpath) {
@@ -9,7 +9,7 @@ exports.getSecret = function (smpath) {
         console.log("SM PATH: " + smpath)
         // Load the AWS SDK
 
-        var AWS = require('aws-sdk'),
+        let AWS = require('aws-sdk'),
             region = "eu-west-2",
             secretName = smpath,
             secret,
@@ -17,7 +17,7 @@ exports.getSecret = function (smpath) {
 
 
 // Create a Secrets Manager client
-        var client = new AWS.SecretsManager({
+        let client = new AWS.SecretsManager({
             region: region
         });
 

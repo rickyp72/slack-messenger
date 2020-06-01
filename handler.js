@@ -1,3 +1,4 @@
+"use strict"
 const pts = require('./posttoslack.js')
 const secret = require('./getSecret.js')
 
@@ -8,7 +9,7 @@ exports.handler = async (event) => {
     console.log("EVENT WEBHOOK: " + event.webhook)
     let myHook = await secret.getSecret(event.webhook)
 
-    var jsonData = JSON.parse(myHook);
+    let jsonData = JSON.parse(myHook);
 
     console.log("MYHOOK AS JSON: " + jsonData.hookPath)
 
